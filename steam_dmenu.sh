@@ -30,5 +30,5 @@ nam="`echo "$line"|tr '\n\t' ' '|sed 's/.*"name"[^"]*"\([^"]*\).*/\1/'|tr ' ' '_
 set -- "$@" "$nam" "`echo "$line"|tr '\n\t' ' '|sed 's/.*"appid"[^"]*"\([^"]*\).*/\1/'`" 
 done
 test $pkill -eq 1 && printf '%s\n' "$@" && exit
-run=`printf '%s  :%s\n' "$@" | $run | sed 's/.*:\(.*\)/\1/'`
 test -n "$run" && xdg-open "steam://run/$run"
+run=`printf '%s  :%s\n' "$@" | sort | $run | sed 's/.*:\(.*\)/\1/'`
